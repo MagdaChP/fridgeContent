@@ -23,7 +23,7 @@ import EditItem from "../EditItem/EditItem";
 export default {
   data() {
     return {
-      categories: this.$store.state.options,
+      categories: this.$store.state.categories,
       backgroundColor: ""
     };
   },

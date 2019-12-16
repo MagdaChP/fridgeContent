@@ -1,0 +1,59 @@
+#app {
+  text-align: center;
+  box-sizing: border-box;
+  color: $font-color;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 30px auto;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-block;
+    padding: 5px;
+    margin: 0 15px 20px 0;
+    color: grey;
+  // background: rgb(243, 234, 199);
+}
+
+label {
+  margin: 25px 0 0 0;
+  text-align: left;
+  display: block;
+  position: relative;
+  left: 20px;
+  font-size: 0.7em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+input,
+select {
+  padding: 10px 10px 5px 10px;
+  max-width: 300px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(10, 37, 17);
+  background: #fff;
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  width: 40%;
+  max-width: 200px;
+  padding: 10px;
+  background: $btn-color;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  cursor: pointer;
+}

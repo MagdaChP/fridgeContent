@@ -10,13 +10,12 @@ export default new Vuex.Store({
     userId: "",
     isLoading: false,
     items: [],
-    options: [
-      { category: "meat", color: "rgb(238, 63, 101)" },
-      { category: "vegetables", color: "rgb(160, 114, 114)" },
-      { category: "pastry", color: "rgb(240, 209, 126)" },
-      { category: "fruits", color: "#b1ecb1" },
-      { category: "liquids", color: "lightblue" },
-      { category: "ready meal", color: "pink" }
+    categories: [
+      { id: "cat1", category: "meat", color: "rgb(238, 63, 101)" },
+      { id: "cat2", category: "vegetables", color: "rgb(160, 114, 114)" },
+      { id: "cat4", category: "fruits", color: "#b1ecb1" },
+      { id: "cat3", category: "pastry", color: "rgb(240, 209, 126)" },
+      { id: "cat5", category: "ready meal", color: "pink" }
     ]
   },
   mutations: {
@@ -41,14 +40,19 @@ export default new Vuex.Store({
       for (let cat in payload) {
         displayCat.push(payload[cat]);
       }
-      state.options.push(...displayCat);
+      state.categories.push(...displayCat);
       state.isLoading = false;
     },
     addItem(state, payload) {
       state.items.push(payload);
     },
     addCategory(state, payload) {
-      state.options.push(payload);
+      state.categories.push(payload);
+    },
+    deleteCategory(state, payload) {
+      state.categories = state.categories.filter( cat => {
+        return cat.id !== payload;
+      });
     },
     deleteItem(state, payload) {
       state.items = state.items.filter(el => {
@@ -95,6 +99,14 @@ export default new Vuex.Store({
         console.error(e);
       }
     },
+    async deleteCategory({commit}, id) {
+      try {
+        await firebase.database().ref(this.state.userId + "/categories/" + id).remove();
+        commit("deleteCategory", id);
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async deleteData({ commit }, id) {
       try {
         await firebase
@@ -115,7 +127,7 @@ export default new Vuex.Store({
       let newItemData = {
         id: newItemKey,
         ...context,
-        colors: this.state.options,
+        colors: this.state.categories,
         edit: false
       };
       let updates = {};
@@ -138,6 +150,8 @@ export default new Vuex.Store({
         .push().key;
       let updates = {};
       updates[this.state.userId + "/categories/" + newCatKey] = context;
+      console.log(typeof context);
+      context.id = newCatKey;
       try {
         await firebase
           .database()

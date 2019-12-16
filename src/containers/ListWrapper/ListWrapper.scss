@@ -1,0 +1,45 @@
+.form-wrapper {
+    padding: 10px;
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: all 0.5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    .sort-btns {
+      width: 80%;
+      margin: 0 auto 20px;
+      text-align: left;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+      .sort-category-btn {
+        cursor: pointer;
+        width: 77px;
+        max-width: 200px;
+        margin: 5px auto;
+        padding: 10px;
+        background: #888;
+        border: none;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        font-size: 0.6em;
+      }
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 80%;
+      margin: 0 auto;
+      padding: 0;
+      @media (max-width: 768px) {
+        width: 100%;
+        justify-content: space-evenly;
+      }
+    }
+  }

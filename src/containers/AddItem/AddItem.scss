@@ -1,0 +1,32 @@
+.add-item-wrapper {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .cat-selection {
+    position: relative;
+    .icon {
+      height: 15px;
+      width: 15px;
+      margin: 0 8px 0 0;
+      cursor: pointer;
+      position: relative;
+      top: 2px;
+    }
+  }
+  & > div {
+    width: 100%;
+    max-width: 400px;
+    .disabled-option {
+      background-color: #fff;
+    }
+    option {
+      padding: 5px;
+    }
+  }
+  button {
+    margin: 35px auto;
+  }
+}
